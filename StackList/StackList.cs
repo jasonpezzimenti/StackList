@@ -111,7 +111,7 @@ namespace StackList
 
 		private void ThrowIndexOutOfRangeException(int index)
 		{
-			if (Stack[index] == null)
+			if (index < 0 || index > Count)
 			{
 				throw new IndexOutOfRangeException();
 			}
