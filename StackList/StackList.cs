@@ -58,6 +58,24 @@ namespace StackList
 			return Stack[0];
 		}
 
+		public T Peek(int index)
+		{
+			ThrowIndexOutOfRangeException(index);
+			return Stack[index];
+		}
+
+		public T[] Reverse()
+		{
+			T[] array = Stack;
+
+			if(Count >= 1)
+			{
+				array = (T[])Stack.Reverse<T>();
+			}
+
+			return array;
+		}
+
 		public void Pop()
 		{
 			Stack = Stack.Take<T>(new Range(1, Count)).ToArray<T>();
