@@ -29,7 +29,7 @@ namespace StackList
 			for (int index = 0; index < Count; index++)
 			{
 				/* Push the items forward by one, leaving the top of the stack
-				 * empty, so it can be assigned to later one.
+				 * empty, so it can be assigned-to later one.
 				 */
 				array[index + 1] = Stack[index];
 			}
