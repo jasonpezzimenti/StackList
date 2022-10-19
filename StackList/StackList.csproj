@@ -4,6 +4,12 @@
     <TargetFramework>net6.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
+    <Company>Jason Pezzimenti</Company>
+    <PackageProjectUrl>https://www.github.com/jasonpezzimenti/stacklist</PackageProjectUrl>
+    <Description>A simple Stack implementation written in C#.</Description>
+    <RepositoryUrl>https://www.github.com/jasonpezzimenti/stacklist</RepositoryUrl>
+    <RepositoryType>git</RepositoryType>
+    <PackageTags>stack,list,c#,data structure</PackageTags>
   </PropertyGroup>
 
 </Project>
