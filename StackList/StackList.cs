@@ -21,18 +21,26 @@ namespace StackList
 			Stack = new T[capacity];
 		}
 
-		public void ResizeStack()
+		public void ResizeAndReorderStack()
 		{
+			// Create a new array with 1 extra space.
 			T[] array = new T[Count + 1];
 
 			for (int index = 0; index < Count; index++)
 			{
+				/* Push the items forward by one, leaving the top of the stack
+				 * empty, so it can be assigned to later one.
+				 */
 				array[index + 1] = Stack[index];
 			}
 
 			Stack = array;
 		}
 
+		/// <summary>
+		/// Returns each item in the Stack.
+		/// </summary>
+		/// <returns>Each item in the Stack.</returns>
 		IEnumerator<T> IEnumerable<T>.GetEnumerator()
 		{
 			foreach(T item in Stack)
@@ -48,7 +56,7 @@ namespace StackList
 
 		public void Push(T item)
 		{
-			ResizeStack();
+			ResizeAndReorderStack();
 			Stack[0] = item;
 		}
 
