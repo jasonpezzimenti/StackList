@@ -37,13 +37,25 @@ namespace StackList
 			Stack = array;
 		}
 
+		public T[] ResizeAndReorderStack(T[] array, int count)
+		{
+			T[] newArray = new T[count + 1];
+
+			for (int index = 0; index < count; index++)
+			{
+				newArray[index + 1] = array[index];
+			}
+
+			return newArray;
+		}
+
 		/// <summary>
 		/// Returns each item in the Stack.
 		/// </summary>
 		/// <returns>Each item in the Stack.</returns>
 		IEnumerator<T> IEnumerable<T>.GetEnumerator()
 		{
-			foreach(T item in Stack)
+			foreach (T item in Stack)
 			{
 				yield return item;
 			}
@@ -76,7 +88,7 @@ namespace StackList
 		{
 			T[] array = Stack;
 
-			if(Count >= 1)
+			if (Count >= 1)
 			{
 				array = (T[])Stack.Reverse<T>();
 			}
@@ -102,7 +114,7 @@ namespace StackList
 		{
 			dynamic item = String.Empty;
 
-			switch(position)
+			switch (position)
 			{
 				case StackPositions.Top:
 					if (Stack[0] != null)
@@ -133,6 +145,26 @@ namespace StackList
 		{
 			ThrowIndexOutOfRangeException(index);
 			return Stack[index];
+		}
+
+		public T[] Get(int[] indexes)
+		{
+			T[] array = new T[indexes.Length];
+
+			foreach (int index in indexes)
+			{
+				if (index < 0 || index > Count)
+				{
+					ThrowIndexOutOfRangeException(index);
+				}
+				else
+				{
+					ResizeAndReorderStack(array, indexes.Length);
+					array[index] = Stack[index];
+				}
+			}
+
+			return array;
 		}
 
 		private void ThrowIndexOutOfRangeException(int index)
